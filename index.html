@@ -5,25 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>Weather Dashboard</title>
 </head>
 <body>
     <div class="wrapper">
         <div class="container">
-            <header style="background: linear-gradient(45deg, lightblue, darkblue);;">
-                <h1 style="text-align: center;font-weight: bold;color:white ;">Weather Dashboard</h1>
+            <header>
+                <h1>Weather Dashboard</h1>
             </header>
         </div>
-            <div class="ui raised very padded text container segment">
-                <h2 class="ui header">City</h2>
+        <div class="ui two column grid">
+            <div class="four wide column">
+              <div class="ui segment">
+                <h2 class="ui header">Search for a City:</h2>
                 <p></p>
                 <p></p>
+              </div>
             </div>
-            <div class="ui raised very padded text container segment">
-                <h2 class="ui header">5-Day Forecast:</h2>
-                <p></p>
-                <p></p>
+            <div class="twelve wide column">
+              <div class="ui segment">
+                <div class="ui raised very padded text container segment">
+                    <h2 class="ui header">City</h2>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="ui raised very padded text container segment">
+                    <h2 class="ui header">5-Day Forecast:</h2>
+                    <p></p>
+                    <p></p>
+                </div>
+              </div>
             </div>
+        </div>
+
+            
         </div>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </body>

@@ -1,0 +1,14 @@
+body {
+    margin: 0 auto;
+}
+
+header {
+    background: linear-gradient(45deg, lightblue, darkblue);
+    padding: 2em;
+}
+
+header, h1 {
+    text-align: center;
+    font-weight: bold;
+    color:white ;
+}
