@@ -15,14 +15,34 @@
                 <h1>Weather Dashboard</h1>
             </header>
         </div>
+        <!-- Semantic UI -->
         <div class="ui two column grid">
+            <!-- Search Column -->
             <div class="four wide column">
               <div class="ui segment">
                 <h2 class="ui header">Search for a City:</h2>
-                <p></p>
-                <p></p>
+                <!-- Search field -->
+                <div class="ui search">
+                    <div class="ui icon input">
+                      <input class="prompt" type="text" placeholder="Search for a City ...">
+                      <i class="search icon"></i>
+                    </div>
+                    <div class="results"></div>
+                </div>
+                <!-- Horizontal Divider -->
+                <div class="ui divider"></div>
+                <!-- List of Common Cities -->
+                <p><button class="ui toggle button">Austin</button></p>
+                <p><button class="ui toggle button">Chicago</button></p>
+                <p><button class="ui toggle button">New York</button></p>
+                <p><button class="ui toggle button">Orlando</button></p>
+                <p><button class="ui toggle button">San Francisco</button></p>
+                <p><button class="ui toggle button">Seattle</button></p>
+                <p><button class="ui toggle button">Denver</button></p>
+                <p><button class="ui toggle button">Atlanta</button></p>
               </div>
             </div>
+            <!-- API Content -->
             <div class="twelve wide column">
               <div class="ui segment">
                 <div class="ui raised very padded text container segment">
@@ -38,9 +58,7 @@
               </div>
             </div>
         </div>
-
-            
-        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </body>
 </html>

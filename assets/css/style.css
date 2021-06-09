@@ -12,3 +12,8 @@ header, h1 {
     font-weight: bold;
     color:white ;
 }
+
+button {
+    width:95%;
+    text-align: center;
+}
