@@ -1,1 +1,53 @@
-{"coord":{"lon":-81.3792,"lat":28.5383},"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01n"}],"base":"stations","main":{"temp":297.67,"feels_like":298.29,"temp_min":295.35,"temp_max":300.19,"pressure":1021,"humidity":81},"visibility":10000,"wind":{"speed":3.09,"deg":140},"clouds":{"all":1},"dt":1623216191,"sys":{"type":1,"id":5234,"country":"US","sunrise":1623234445,"sunset":1623284548},"timezone":-14400,"id":4167147,"name":"Orlando","cod":200}
+{
+    "coord":{
+        "lon":-81.3792,
+        "lat":28.5383
+    },
+
+    "weather":[{
+        "id":800,
+        "main":"Clear",
+        "description":"clear sky",
+        "icon":"01n"
+    }],
+
+    "base":"stations",
+
+    "main":{
+        "temp":297.67,
+        "feels_like":298.29,
+        "temp_min":295.35,
+        "temp_max":300.19,
+        "pressure":1021,
+        "humidity":81
+    },
+
+    "visibility":10000,
+
+    "wind":{
+        "speed":3.09,
+        "deg":140
+    },
+
+    "clouds":{
+        "all":1
+    },
+
+    "dt":1623216191,
+
+    "sys":{
+        "type":1,
+        "id":5234,
+        "country":"US",
+        "sunrise":1623234445,
+        "sunset":1623284548
+    },
+
+    "timezone":-14400,
+
+    "id":4167147,
+
+    "name":"Orlando",
+
+    "cod":200
+}
