@@ -19,7 +19,7 @@ var openWeatherAPIKey = "4eb039b0070fce508f83ad28919270e9";
 function searchWeather(searchValue){
 console.log("HEY WERE IN SEARCH WEATHER", searchValue)
 
-var openWeatherAPIUrl = "http://api.openweathermap.org/data/2.5/weather?q=" 
+var openWeatherAPIUrl = "https://api.openweathermap.org/data/2.5/weather?q=" 
  + searchValue + "&appid=" + openWeatherAPIKey + "&units=imperial";
 
  let config = {
@@ -70,7 +70,7 @@ var openWeatherAPIUrl = "http://api.openweathermap.org/data/2.5/weather?q="
 function searchFiveDay(coords){
 console.log("SEARCH FIVE DAY COORDS", coords);
 
-var openWeatherFiveDayUrl = "http://api.openweathermap.org/data/2.5/onecall?lat=" + coords.lat + "&lon=" + coords.lon + "&appid=" + openWeatherAPIKey + "&units=imperial";
+var openWeatherFiveDayUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + coords.lat + "&lon=" + coords.lon + "&appid=" + openWeatherAPIKey + "&units=imperial";
 
 fetch(openWeatherFiveDayUrl)
 .then(function(res){
