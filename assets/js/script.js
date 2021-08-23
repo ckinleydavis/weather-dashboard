@@ -61,14 +61,14 @@ var openWeatherAPIUrl = "http://api.openweathermap.org/data/2.5/weather?q="
         lon: data.coord.lon
     }
 
-    searchFiveDay(coords)
+    searchFiveDay(coords);
 
 }).catch(function(err){
-    console.log(err)
+    console.log(err);
 });
 
 function searchFiveDay(coords){
-console.log("SEARCH FIVE DAY COORDS", coords)
+console.log("SEARCH FIVE DAY COORDS", coords);
 
 var openWeatherFiveDayUrl = "http://api.openweathermap.org/data/2.5/onecall?lat=" + coords.lat + "&lon=" + coords.lon + "&appid=" + openWeatherAPIKey + "&units=imperial";
 
@@ -78,12 +78,49 @@ fetch(openWeatherFiveDayUrl)
 }).then(function(data){
     console.log("FIVE DAY DATA", data);
  
-    var fiveDays = [data.daily[0],data.daily[1], data.daily[2],data.daily[3],data.daily[4]]
+    var fiveDays = [data.daily[0],data.daily[1], data.daily[2],data.daily[3],data.daily[4]];
+    // console.log("FIVE SINGLE DAY FORECASTS", fiveDays);
+    
+    // Day Names
+    var dayOneName = $("<h3>").text(Date(data.daily[0].dt));
+    var weekDayOne = dayOneName.toLocaleString("en-US", {  weekday: 'short' });
+    // console.log("Day One Date: ", dayOneName);
+    console.log("WEEK DAY ONE NAME: ", weekDayOne);
 
-    console.log("FIVE SINGLE DAY FORECASTS", fiveDays)
+    var dayTwoName = $("<h3>").text(Date(data.daily[1].dt).toLocaleString("en-US", {  weekday: 'short' }));
+    var dayThreeName = $("<h3>").text(Date(data.daily[2].dt).toLocaleString("en-US", {  weekday: 'short' }));
+    var dayFourName = $("<h3>").text(Date(data.daily[3].dt).toLocaleString("en-US", {  weekday: 'short' }));
+    var dayFiveName = $("<h3>").text(Date(data.daily[4].dt).toLocaleString("en-US", {  weekday: 'short' }));
 
+    // Day Temps
+    var dayOneTemp = $("<p class='card-text'>")
+    .text("Temperature: " + data.daily[0].temp.day + "F");
+    var dayTwoTemp = $("<p class='card-text'>")
+    .text("Temperature: " + data.daily[1].temp.day + "F");
+    var dayThreeTemp = $("<p class='card-text'>")
+    .text("Temperature: " + data.daily[2].temp.day + "F");
+    var dayFourTemp = $("<p class='card-text'>")
+    .text("Temperature: " + data.daily[3].temp.day + "F");
+    var dayFiveTemp = $("<p class='card-text'>")
+    .text("Temperature: " + data.daily[4].temp.day + "F");
+    // console.log("DAY ONE TEMPERATURE: ", dayOneTemp);
 
+    // Card formatting
+    var col =  $('<div>').addClass("col-md");
+    var card = $('<div>').addClass("card");
+    var cardBody =  $('<div>').addClass("card-body");
+    var cardTitle =  $('<div>').addClass("card-title");
 
+    col.append(card);
+    card.append(cardBody);
+    cardBody.append(
+        weekDayOne, dayOneTemp, 
+        dayTwoName, dayTwoTemp, 
+        dayThreeName, dayThreeTemp, 
+        dayFourName, dayFourTemp, 
+        dayFiveName, dayFiveTemp,);
+
+    $("#fiveDay-weather").append(col);
 
 }).catch(function(err){
     console.log(err)

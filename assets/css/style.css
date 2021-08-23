@@ -4,7 +4,7 @@ body {
 
 header {
     background: linear-gradient(45deg, lightblue, darkblue);
-    padding: 2em;
+    /* padding: 0em; */
 }
 
 header, h1 {
