@@ -1,44 +1,99 @@
-// API VARIABLES
+$(document).ready(function(){
+
+  
+    $(".search-icon").on("click", function(){
+        var searchValue = $('.search-value').val()
+        console.log(searchValue)
+
+        searchWeather(searchValue);
+
+
+    })
+
+
+
+
+
 var openWeatherAPIKey = "4eb039b0070fce508f83ad28919270e9";
-var cityName = "orlando"; // Hardcoded for testing
-var openWeatherAPIUrl = "https://api.openweathermap.org/data/2.5/weather?q=" 
-        + cityName + "&appid=" + openWeatherAPIKey;
 
-// Search Input & Button Variables
-var searchEl = document.querySelector('.prompt');   // document.getElementsByClassName("prompt");
-var resultsEl = document.querySelector('.results');     // document.getElementsByClassName("results");
+function searchWeather(searchValue){
+console.log("HEY WERE IN SEARCH WEATHER", searchValue)
 
-// FETCH RESULTSET
+var openWeatherAPIUrl = "http://api.openweathermap.org/data/2.5/weather?q=" 
+ + searchValue + "&appid=" + openWeatherAPIKey + "&units=imperial";
 
-    function renderMessage() {
-        var resultSet = JSON.parse( localStorage.getItem("name") );
+ let config = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Headers": "Content-Type", 
+        //"Access-Control-Allow-Headers", 'Authorization', X-Requested-With"
+    }
+ }
 
-        if (resultSet !== null) {
-            // ISSUE: HOW TO DISPLAY DATA TO HTML DIV CLASS = RESULTS?
-            document.querySelector(".results").textContent = resultsEl.name;    //+ " current weather " + resultsEl.weather
-            console.log(resultSet);
-        }
+ fetch(openWeatherAPIUrl)
+.then(function(res){
+    return res.json();
+
+}).then(function(data){
+    console.log(data)
+
+    var cityName = $("<h2>").text( data.name);
+    var cityTemp = $("<p class='card-text'>").text("Temperature: " + data.main.temp + "F");
+    var cityHumidity = $("<p class='card-text' >").text("Humidity: " + data.main.humidity + "%");
+    var cityWind = $("<p class='card-text'>").text("Wind: " + data.wind.speed + "MPH");
+
+    var col =  $('<div>').addClass("col-md");
+    var card = $('<div>').addClass("card");
+    var cardBody =  $('<div>').addClass("card-body");
+    var cardTitle =  $('<div>').addClass("card-title");
+
+    cardTitle.append(cityName)
+    col.append(card)
+    card.append(cardBody)
+    cardBody.append(cardTitle, cityTemp, cityHumidity, cityWind)
+
+    $("#currentWeather").append(col);
+
+    var coords = {
+        lat: data.coord.lat,
+        lon: data.coord.lon
     }
 
-// var resultSet = function ( event ) {
-    // event.preventDefault();
-    fetch ( openWeatherAPIUrl ) .then ( function ( response ) {
+    searchFiveDay(coords)
 
-        if ( response.ok ) {
-            response.json() .then ( function ( data ) {
-                // console.log ( JSON.stringify ( data ) );
-                // ISSUE: HOW TO RETRIEVE ONE KEY/VALUE PAIR FROM DATA? (I.E. NAME: "ORLANDO")
-                // REFERENCE: https://www.sitepoint.com/loop-through-json-response-javascript/
-                // localStorage.setItem("name", JSON.stringify ( data ) ); 
-                // console.log (JSON.parse(localStorage.length));
-                renderMessage();
-            })
-        } else {
-            alert("Please enter a city name.");
-        }
-    })
-// }
+}).catch(function(err){
+    console.log(err)
+});
 
-// searchEl.addEventListener('submit', searchCity);
-// console.log("Search Input: " + searchInput);
-// console.log("Result Set: " + resultSet);
+function searchFiveDay(coords){
+console.log("SEARCH FIVE DAY COORDS", coords)
+
+var openWeatherFiveDayUrl = "http://api.openweathermap.org/data/2.5/onecall?lat=" + coords.lat + "&lon=" + coords.lon + "&appid=" + openWeatherAPIKey + "&units=imperial";
+
+fetch(openWeatherFiveDayUrl)
+.then(function(res){
+    return res.json();
+}).then(function(data){
+    console.log("FIVE DAY DATA", data);
+ 
+    var fiveDays = [data.daily[0],data.daily[1], data.daily[2],data.daily[3],data.daily[4]]
+
+    console.log("FIVE SINGLE DAY FORECASTS", fiveDays)
+
+
+
+
+}).catch(function(err){
+    console.log(err)
+})
+
+
+}
+
+
+}
+})
+
+

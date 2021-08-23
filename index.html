@@ -24,22 +24,15 @@
                 <!-- Search field -->
                 <div class="ui search">
                     <div class="ui icon input">
-                      <input class="prompt" type="text" placeholder="Search for a City ...">
-                      <i class="search icon"></i>
+                      <input class="search-value" type="text" placeholder="Search for a City ...">
+                      <button class="search-icon"></button>
                     </div>
                     <div class="results"></div>
                 </div>
                 <!-- Horizontal Divider -->
                 <div class="ui divider"></div>
-                <!-- List of Common Cities -->
-                <p><button class="ui toggle button">Austin</button></p>
-                <p><button class="ui toggle button">Chicago</button></p>
-                <p><button class="ui toggle button">New York</button></p>
-                <p><button class="ui toggle button">Orlando</button></p>
-                <p><button class="ui toggle button">San Francisco</button></p>
-                <p><button class="ui toggle button">Seattle</button></p>
-                <p><button class="ui toggle button">Denver</button></p>
-                <p><button class="ui toggle button">Atlanta</button></p>
+                <!-- List of Common Cities --
+
               </div>
             </div>
             <!-- API Content -->
@@ -47,13 +40,11 @@
               <div class="ui segment">
                 <div class="ui raised very padded text container segment">
                     <h2 class="ui header">City</h2>
-                    <p></p>
-                    <p></p>
+                   <div id="currentWeather"></div>
                 </div>
                 <div class="ui raised very padded text container segment">
                     <h2 class="ui header">5-Day Forecast:</h2>
-                    <p></p>
-                    <p></p>
+                    <div id="fiveDay-weather"></div>
                 </div>
               </div>
             </div>
